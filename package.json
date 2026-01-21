@@ -1,6 +1,6 @@
 {
     "name": "jupyterlab_launcher_sections_extension",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "description": "Jupyterlab extension to allow setting section-specific icons for the launcher",
     "keywords": [
         "jupyter",
