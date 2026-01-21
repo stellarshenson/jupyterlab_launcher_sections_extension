@@ -33,3 +33,6 @@ This journal tracks substantive work on documents, diagrams, and documentation c
 
 10. **Task - README screenshot** (v1.0.2): Added screenshot showing launcher with custom section icons<br>
     **Result**: Added `.resources/screenshot.png` showing JupyterLab launcher with custom icons for Services section (gear icon). Updated `README.md` to display screenshot above Features section. Published v1.0.2 to npm and PyPI.
+
+11. **Task - CI lint fix** (v1.0.3): Fixed CI lint:check failure on build artifacts<br>
+    **Result**: CI failed with prettier formatting issues in `labextension/static/*.js` and `package-lock.json` files. Ran `jlpm run lint` to fix formatting. Updated JUPYTERLAB_EXTENSION.md checklist to emphasize running lint before committing build artifacts.
