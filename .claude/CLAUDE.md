@@ -26,11 +26,13 @@ The following workspace rules are STRICTLY ENFORCED for this project:
 **Version**: 0.1.0
 
 A JupyterLab extension that allows setting section-specific icons for the launcher. The extension consists of:
+
 - TypeScript frontend plugin (`src/index.ts`)
 - Python server extension (`jupyterlab_launcher_sections_extension/`)
 - Standard JupyterLab extension build tooling
 
 **Technology Stack**:
+
 - TypeScript for frontend extension
 - Python for server extension
 - JupyterLab 4.0.0+ APIs
@@ -38,6 +40,7 @@ A JupyterLab extension that allows setting section-specific icons for the launch
 - pip/setuptools for Python packaging
 
 **Development Commands**:
+
 - `make install` - Build and install the extension
 - `make build` - Build packages
 - `make test` - Run tests

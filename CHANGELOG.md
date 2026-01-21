@@ -20,9 +20,9 @@ Initial public release.
 Create YAML files in `jupyter_launcher_sections/` directory:
 
 ```yaml
-- section: "Services"
-  icon: "services.svg"
-  tooltip: "Supporting services for data science"
+- section: 'Services'
+  icon: 'services.svg'
+  tooltip: 'Supporting services for data science'
 ```
 
 <!-- <END NEW CHANGELOG ENTRY> -->

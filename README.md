@@ -39,13 +39,13 @@ Create YAML configuration files in `{jupyter_data_dir}/jupyter_launcher_sections
 **Example** (`services.yml`):
 
 ```yaml
-- section: "Services"
-  icon: "services.svg"
-  tooltip: "Supporting services for data science and environment management"
+- section: 'Services'
+  icon: 'services.svg'
+  tooltip: 'Supporting services for data science and environment management'
 
-- section: "Notebook"
-  icon: "notebook-custom.svg"
-  tooltip: "Create a new Jupyter Notebook"
+- section: 'Notebook'
+  icon: 'notebook-custom.svg'
+  tooltip: 'Create a new Jupyter Notebook'
 ```
 
 **Configuration options**:
