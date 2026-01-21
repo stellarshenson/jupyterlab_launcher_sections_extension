@@ -16,6 +16,9 @@ const plugin: JupyterFrontEndPlugin<void> = {
     'Jupyterlab extension to allow setting section-specific icons for the launcher',
   autoStart: true,
   activate: async (app: JupyterFrontEnd) => {
+    console.log(
+      'JupyterLab extension jupyterlab_launcher_sections_extension is activated!'
+    );
     const applier = new LauncherSectionApplier();
 
     try {
