@@ -4,26 +4,41 @@ import {
 } from '@jupyterlab/application';
 
 import { requestAPI } from './request';
+import { IConfigResponse } from './types';
+import { LauncherSectionApplier } from './applier';
 
 /**
  * Initialization data for the jupyterlab_launcher_section_icons_extension extension.
  */
 const plugin: JupyterFrontEndPlugin<void> = {
   id: 'jupyterlab_launcher_section_icons_extension:plugin',
-  description: 'Jupyterlab extension to allow setting section-specific icons for the launcher',
+  description:
+    'Jupyterlab extension to allow setting section-specific icons for the launcher',
   autoStart: true,
-  activate: (app: JupyterFrontEnd) => {
-    console.log('JupyterLab extension jupyterlab_launcher_section_icons_extension is activated!');
+  activate: async (app: JupyterFrontEnd) => {
+    console.log(
+      'JupyterLab extension jupyterlab_launcher_section_icons_extension is activated!'
+    );
 
-    requestAPI<any>('hello')
-      .then(data => {
-        console.log(data);
-      })
-      .catch(reason => {
-        console.error(
-          `The jupyterlab_launcher_section_icons_extension server extension appears to be missing.\n${reason}`
-        );
-      });
+    const applier = new LauncherSectionApplier();
+
+    try {
+      const config = await requestAPI<IConfigResponse>('config');
+      console.log(
+        `Loaded ${config.sections.length} launcher section icon configurations`
+      );
+      applier.setConfigs(config.sections);
+    } catch (reason) {
+      console.error(
+        `Failed to load launcher section icon configurations: ${reason}`
+      );
+      return;
+    }
+
+    // Start applying icons after the app is restored
+    app.restored.then(() => {
+      applier.start();
+    });
   }
 };
 

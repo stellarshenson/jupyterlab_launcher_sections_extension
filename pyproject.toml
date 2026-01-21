@@ -23,7 +23,9 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
 ]
 dependencies = [
-    "jupyter_server>=2.4.0,<3"
+    "jupyter_server>=2.4.0,<3",
+    "PyYAML>=6.0",
+    "jsonschema>=4.0"
 ]
 dynamic = ["version", "description", "authors", "urls", "keywords"]
 
@@ -48,6 +50,12 @@ fields = ["description", "authors", "urls", "keywords"]
 [tool.hatch.build.targets.sdist]
 artifacts = ["jupyterlab_launcher_section_icons_extension/labextension"]
 exclude = [".github", "binder"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["jupyterlab_launcher_section_icons_extension"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"jupyterlab_launcher_section_icons_extension/schema" = "jupyterlab_launcher_section_icons_extension/schema"
 
 [tool.hatch.build.targets.wheel.shared-data]
 "jupyterlab_launcher_section_icons_extension/labextension" = "share/jupyter/labextensions/jupyterlab_launcher_section_icons_extension"
