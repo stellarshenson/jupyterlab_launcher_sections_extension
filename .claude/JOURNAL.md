@@ -30,3 +30,6 @@ This journal tracks substantive work on documents, diagrams, and documentation c
 
 9. **Task - CI Python version fix** (v1.0.3): Fixed CI test_isolated job failing due to Python version mismatch<br>
    **Result**: CI failed with "Package 'jupyterlab-launcher-sections-extension' requires a different Python: 3.9.25 not in '>=3.10'". The `test_isolated` job in `.github/workflows/build.yml` used Python 3.9 but `pyproject.toml` specifies `requires-python = ">=3.10"`. Updated workflow to use Python 3.10. Also updated workspace `JUPYTERLAB_EXTENSION.md` skill template with same fix.
+
+10. **Task - README screenshot** (v1.0.2): Added screenshot showing launcher with custom section icons<br>
+    **Result**: Added `.resources/screenshot.png` showing JupyterLab launcher with custom icons for Services section (gear icon). Updated `README.md` to display screenshot above Features section. Published v1.0.2 to npm and PyPI.

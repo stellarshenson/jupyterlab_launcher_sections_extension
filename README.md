@@ -10,6 +10,8 @@
 
 Customize your JupyterLab launcher with section-specific icons. This extension allows you to set custom icons for different launcher sections, making it easier to visually distinguish between categories of notebooks and other items.
 
+![JupyterLab Launcher with Custom Section Icons](.resources/screenshot.png)
+
 ## Features
 
 - **Custom section icons** - Set unique icons for each launcher section (Notebooks, Console, Other, etc.)
