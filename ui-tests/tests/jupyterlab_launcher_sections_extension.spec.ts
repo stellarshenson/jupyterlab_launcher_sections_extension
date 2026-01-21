@@ -16,6 +16,6 @@ test('should emit an activation console message', async ({ page }) => {
   await page.goto();
 
   expect(
-    logs.filter(s => s === 'JupyterLab extension jupyterlab_launcher_section_icons_extension is activated!')
+    logs.filter(s => s === 'JupyterLab extension jupyterlab_launcher_sections_extension is activated!')
   ).toHaveLength(1);
 });

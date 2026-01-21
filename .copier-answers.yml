@@ -7,10 +7,10 @@ has_ai_rules: false
 has_binder: false
 has_settings: false
 kind: frontend-and-server
-labextension_name: jupyterlab_launcher_section_icons_extension
+labextension_name: jupyterlab_launcher_sections_extension
 project_short_description: Jupyterlab extension to allow setting section-specific
     icons for the launcher
-python_name: jupyterlab_launcher_section_icons_extension
+python_name: jupyterlab_launcher_sections_extension
 repository: ''
 test: true
 

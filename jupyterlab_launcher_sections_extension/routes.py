@@ -30,7 +30,7 @@ class HelloRouteHandler(APIHandler):
         self.finish(json.dumps({
             "data": (
                 "Hello, world!"
-                " This is the '/jupyterlab-launcher-section-icons-extension/hello' endpoint."
+                " This is the '/jupyterlab-launcher-sections-extension/hello' endpoint."
                 " Try visiting me in your browser!"
             ),
         }))
@@ -42,12 +42,12 @@ def setup_route_handlers(web_app):
 
     # Config endpoint
     config_route_pattern = url_path_join(
-        base_url, "jupyterlab-launcher-section-icons-extension", "config"
+        base_url, "jupyterlab-launcher-sections-extension", "config"
     )
 
     # Hello endpoint (kept for testing)
     hello_route_pattern = url_path_join(
-        base_url, "jupyterlab-launcher-section-icons-extension", "hello"
+        base_url, "jupyterlab-launcher-sections-extension", "hello"
     )
 
     handlers = [

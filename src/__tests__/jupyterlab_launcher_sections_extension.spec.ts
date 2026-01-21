@@ -2,7 +2,7 @@
  * Example of [Jest](https://jestjs.io/docs/getting-started) unit tests
  */
 
-describe('jupyterlab_launcher_section_icons_extension', () => {
+describe('jupyterlab_launcher_sections_extension', () => {
   it('should be tested', () => {
     expect(1 + 1).toEqual(2);
   });

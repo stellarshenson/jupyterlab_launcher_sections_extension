@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 # Configuration file patterns
 CONFIG_PATTERNS = ["*.yaml", "*.yml"]
-CONFIG_DIR = "jupyter_launcher_section_icons"
+CONFIG_DIR = "jupyter_launcher_sections"
 
 
 def get_schema() -> Dict:

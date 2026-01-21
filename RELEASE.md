@@ -1,4 +1,4 @@
-# Making a new release of jupyterlab_launcher_section_icons_extension
+# Making a new release of jupyterlab_launcher_sections_extension
 
 The extension can be published to `PyPI` and `npm` manually or using the [Jupyter Releaser](https://github.com/jupyter-server/jupyter_releaser).
 

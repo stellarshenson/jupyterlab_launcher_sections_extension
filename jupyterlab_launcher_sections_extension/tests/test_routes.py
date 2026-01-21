@@ -3,7 +3,7 @@ import json
 
 async def test_hello(jp_fetch):
     # When
-    response = await jp_fetch("jupyterlab-launcher-section-icons-extension", "hello")
+    response = await jp_fetch("jupyterlab-launcher-sections-extension", "hello")
 
     # Then
     assert response.code == 200
@@ -11,7 +11,7 @@ async def test_hello(jp_fetch):
     assert payload == {
             "data": (
                 "Hello, world!"
-                " This is the '/jupyterlab-launcher-section-icons-extension/hello' endpoint."
+                " This is the '/jupyterlab-launcher-sections-extension/hello' endpoint."
                 " Try visiting me in your browser!"
             ),
         }

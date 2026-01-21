@@ -5,4 +5,4 @@ pytest_plugins = ("pytest_jupyter.jupyter_server", )
 
 @pytest.fixture
 def jp_server_config(jp_server_config):
-    return {"ServerApp": {"jpserver_extensions": {"jupyterlab_launcher_section_icons_extension": True}}}
+    return {"ServerApp": {"jpserver_extensions": {"jupyterlab_launcher_sections_extension": True}}}

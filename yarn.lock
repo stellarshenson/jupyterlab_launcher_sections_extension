@@ -7731,9 +7731,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jupyterlab_launcher_section_icons_extension@workspace:.":
+"jupyterlab_launcher_sections_extension@workspace:.":
   version: 0.0.0-use.local
-  resolution: "jupyterlab_launcher_section_icons_extension@workspace:."
+  resolution: "jupyterlab_launcher_sections_extension@workspace:."
   dependencies:
     "@jupyterlab/application": ^4.0.0
     "@jupyterlab/builder": ^4.0.0

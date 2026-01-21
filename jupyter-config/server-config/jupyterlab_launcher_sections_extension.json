@@ -1,7 +1,7 @@
 {
   "ServerApp": {
     "jpserver_extensions": {
-      "jupyterlab_launcher_section_icons_extension": true
+      "jupyterlab_launcher_sections_extension": true
     }
   }
 }
