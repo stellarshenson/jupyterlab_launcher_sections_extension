@@ -67,6 +67,9 @@ export class LauncherSectionApplier {
     const sections = Array.from(
       document.querySelectorAll('.jp-Launcher-section')
     );
+    console.log(
+      `[LauncherSectionIcons] Found ${sections.length} launcher sections`
+    );
     for (const section of sections) {
       this._applySectionConfig(section);
     }
@@ -102,19 +105,32 @@ export class LauncherSectionApplier {
     // Get section title
     const titleElement = section.querySelector('.jp-Launcher-sectionTitle');
     if (!titleElement) {
+      console.log('[LauncherSectionIcons] No title element found in section');
       return;
     }
 
     const sectionName = titleElement.textContent?.trim();
     if (!sectionName) {
+      console.log('[LauncherSectionIcons] Empty section name');
       return;
     }
+
+    console.log(
+      `[LauncherSectionIcons] Processing section: "${sectionName}"`
+    );
 
     // Get config for this section
     const config = this._configs.get(sectionName);
     if (!config) {
+      console.log(
+        `[LauncherSectionIcons] No config for section: "${sectionName}"`
+      );
       return;
     }
+
+    console.log(
+      `[LauncherSectionIcons] Applying config to section: "${sectionName}"`
+    );
 
     // Mark as processed
     this._processedSections.add(section);
@@ -136,14 +152,35 @@ export class LauncherSectionApplier {
   private _applyIcon(section: Element, svgContent: string): void {
     const header = section.querySelector('.jp-Launcher-sectionHeader');
     if (!header) {
+      console.log('[LauncherSectionIcons] No header found');
       return;
     }
 
-    // Find existing icon container
-    const existingIcon = header.querySelector('.jp-icon-selectable');
+    // Find existing icon container - try multiple selectors
+    let existingIcon = header.querySelector('.jp-icon-selectable');
+
+    // If not found, look for the first element that contains an SVG (before the title)
     if (!existingIcon) {
+      const title = header.querySelector('.jp-Launcher-sectionTitle');
+      if (title) {
+        // Look for sibling element before title that contains SVG
+        let sibling = title.previousElementSibling;
+        while (sibling) {
+          if (sibling.querySelector('svg') || sibling.tagName === 'SVG') {
+            existingIcon = sibling;
+            break;
+          }
+          sibling = sibling.previousElementSibling;
+        }
+      }
+    }
+
+    if (!existingIcon) {
+      console.log('[LauncherSectionIcons] No icon element found in header');
       return;
     }
+
+    console.log('[LauncherSectionIcons] Found icon element, replacing...');
 
     // Create a new LabIcon with the SVG content
     const iconId = `launcher-section-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
@@ -161,6 +198,7 @@ export class LauncherSectionApplier {
 
     // Replace the existing icon
     existingIcon.replaceWith(newIconElement);
+    console.log('[LauncherSectionIcons] Icon replaced successfully');
   }
 
   /**

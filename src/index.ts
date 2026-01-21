@@ -25,12 +25,17 @@ const plugin: JupyterFrontEndPlugin<void> = {
     try {
       const config = await requestAPI<IConfigResponse>('config');
       console.log(
-        `Loaded ${config.sections.length} launcher section icon configurations`
+        `[LauncherSectionIcons] Loaded ${config.sections.length} configurations`
       );
+      for (const section of config.sections) {
+        console.log(
+          `[LauncherSectionIcons] Config for "${section.section}": icon=${!!section.icon}, tooltip=${!!section.tooltip}`
+        );
+      }
       applier.setConfigs(config.sections);
     } catch (reason) {
       console.error(
-        `Failed to load launcher section icon configurations: ${reason}`
+        `[LauncherSectionIcons] Failed to load configurations: ${reason}`
       );
       return;
     }
