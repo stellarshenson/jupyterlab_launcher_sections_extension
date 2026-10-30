@@ -4,3 +4,8 @@ node_modules
 **/package.json
 !/package.json
 jupyterlab_launcher_section_icons_extension
+jupyterlab_launcher_sections_extension
+eslint.config.mjs
+.venv
+.claude
+.agents
