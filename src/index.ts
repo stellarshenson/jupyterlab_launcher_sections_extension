@@ -8,16 +8,16 @@ import { IConfigResponse } from './types';
 import { LauncherSectionApplier } from './applier';
 
 /**
- * Initialization data for the jupyterlab_launcher_sections_extension extension.
+ * Initialization data for the @stellarshenson/jupyterlab-launcher-sections-extension extension.
  */
 const plugin: JupyterFrontEndPlugin<void> = {
-  id: 'jupyterlab_launcher_sections_extension:plugin',
+  id: '@stellarshenson/jupyterlab-launcher-sections-extension:plugin',
   description:
     'Jupyterlab extension to allow setting section-specific icons for the launcher',
   autoStart: true,
   activate: async (app: JupyterFrontEnd) => {
     console.log(
-      'JupyterLab extension jupyterlab_launcher_sections_extension is activated!'
+      'JupyterLab extension @stellarshenson/jupyterlab-launcher-sections-extension is activated!'
     );
     const applier = new LauncherSectionApplier();
 

@@ -19,7 +19,7 @@ test('should emit an activation console message', async ({ page }) => {
     logs.filter(
       s =>
         s ===
-        'JupyterLab extension jupyterlab_launcher_sections_extension is activated!'
+        'JupyterLab extension @stellarshenson/jupyterlab-launcher-sections-extension is activated!'
     )
   ).toHaveLength(1);
 });

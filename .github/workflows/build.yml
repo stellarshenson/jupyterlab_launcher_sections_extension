@@ -34,7 +34,7 @@ jobs:
         jupyter server extension list
         jupyter server extension list 2>&1 | grep -ie "jupyterlab_launcher_sections_extension.*OK"
         jupyter labextension list
-        jupyter labextension list 2>&1 | grep -ie "jupyterlab_launcher_sections_extension.*OK"
+        jupyter labextension list 2>&1 | grep -ie "@stellarshenson/jupyterlab-launcher-sections-extension.*OK"
         python -m jupyterlab.browser_check
 
     - name: Check that all endpoints are authenticated
@@ -77,7 +77,7 @@ jobs:
         jupyter server extension list
         jupyter server extension list 2>&1 | grep -ie "jupyterlab_launcher_sections_extension.*OK"
         jupyter labextension list
-        jupyter labextension list 2>&1 | grep -ie "jupyterlab_launcher_sections_extension.*OK"
+        jupyter labextension list 2>&1 | grep -ie "@stellarshenson/jupyterlab-launcher-sections-extension.*OK"
         python -m jupyterlab.browser_check
 
   integration-tests:

@@ -3,7 +3,6 @@ node_modules
 **/lib
 **/package.json
 !/package.json
-jupyterlab_launcher_section_icons_extension
 jupyterlab_launcher_sections_extension
 eslint.config.mjs
 .venv
