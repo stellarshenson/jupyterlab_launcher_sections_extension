@@ -2,6 +2,13 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## [1.0.8] - 2026-10-31
+
+### Changed
+
+- Apply the template files and packages the upgrade left out
+- Ignore youtube links in check-links
+
 ## [1.0.6] - 2026-10-31
 
 ### Changed
