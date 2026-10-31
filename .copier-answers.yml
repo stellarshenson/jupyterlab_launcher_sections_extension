@@ -12,6 +12,6 @@ labextension_name: '@stellarshenson/jupyterlab-launcher-sections-extension'
 project_short_description: Jupyterlab extension to allow setting section-specific
     icons for the launcher
 python_name: jupyterlab_launcher_sections_extension
-repository: ''
+repository: https://github.com/stellarshenson/jupyterlab_launcher_sections_extension
 test: true
 

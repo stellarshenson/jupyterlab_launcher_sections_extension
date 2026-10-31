@@ -6,9 +6,14 @@ on:
   pull_request:
     branches: '*'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -27,12 +32,20 @@ jobs:
         jlpm
         jlpm run lint:check
 
+    - name: Test the extension
+      run: |
+        set -eux
+        jlpm run test
+
     - name: Build the extension
       run: |
         set -eux
         python -m pip install .[test]
+
+        pytest -vv -r ap --cov jupyterlab_launcher_sections_extension
         jupyter server extension list
         jupyter server extension list 2>&1 | grep -ie "jupyterlab_launcher_sections_extension.*OK"
+
         jupyter labextension list
         jupyter labextension list 2>&1 | grep -ie "@stellarshenson/jupyterlab-launcher-sections-extension.*OK"
         python -m jupyterlab.browser_check
@@ -45,6 +58,7 @@ jobs:
     - name: Package the extension
       run: |
         set -eux
+
         pip install build
         python -m build
         pip uninstall -y "jupyterlab_launcher_sections_extension" jupyterlab
@@ -59,6 +73,7 @@ jobs:
   test_isolated:
     needs: build
     runs-on: ubuntu-latest
+
     steps:
     - name: Install Python
       uses: actions/setup-python@v5
@@ -70,15 +85,29 @@ jobs:
       with:
         name: extension-artifacts
 
-    - name: Install and Test
+    # The full check of the wheel needs Node, which the next step removes.
+    - name: Full browser check of the wheel # template-sync: keep
       run: |
         set -eux
         pip install "jupyterlab>=4.6,<5" jupyterlab_launcher_sections_extension*.whl
+        python -m jupyterlab.browser_check
+
+    - name: Install and Test
+      run: |
+        set -eux
+        # Remove NodeJS, twice to take care of system and locally installed node versions.
+        sudo rm -rf $(which node)
+        sudo rm -rf $(which node)
+
+        pip install "jupyterlab>=4.6,<5" jupyterlab_launcher_sections_extension*.whl
+
+
         jupyter server extension list
         jupyter server extension list 2>&1 | grep -ie "jupyterlab_launcher_sections_extension.*OK"
+
         jupyter labextension list
         jupyter labextension list 2>&1 | grep -ie "@stellarshenson/jupyterlab-launcher-sections-extension.*OK"
-        python -m jupyterlab.browser_check
+        python -m jupyterlab.browser_check --no-browser-test
 
   integration-tests:
     name: Integration tests
@@ -142,13 +171,14 @@ jobs:
           ui-tests/playwright-report
 
   check_links:
+    name: Check Links
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-    - uses: actions/checkout@v4
-    - uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
-      with:
-        python_version: '3.13'
-    - uses: jupyterlab/maintainer-tools/.github/actions/check-links@v1
-      with:
-        ignore_links: "https://www.npmjs.com/package/.* https://pepy.tech/.* https://static.pepy.tech/.* https://www.youtube.com/.*"
+      - uses: actions/checkout@v4
+      - uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
+        with:
+          python_version: '3.13'
+      - uses: jupyterlab/maintainer-tools/.github/actions/check-links@v1
+        with:
+          ignore_links: "https://www.npmjs.com/package/.* https://pepy.tech/.* https://static.pepy.tech/.* https://www.youtube.com/.*"
